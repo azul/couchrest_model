@@ -33,6 +33,10 @@ module CouchRest
           else
             db
           end
+        rescue RestClient::Unauthorized,
+          Errno::EHOSTUNREACH,
+          Errno::ECONNREFUSED => e
+          raise CouchRest::Model::ConnectionFailed.new(e.to_s)
         end
 
         protected

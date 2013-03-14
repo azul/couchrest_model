@@ -20,6 +20,13 @@ module CouchRest
       end
     end
 
+    # Raised when the connection to the couch server can not be established.
+    #
+    # The message will contain the corresponding error message from the
+    # underlying error.
+    #
+    class ConnectionFailed < CouchRestModelError; end
+
     class DocumentNotFound < Errors::CouchRestModelError; end
   end
 end
